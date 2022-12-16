@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:title="home"
+        android:icon="@drawable/ic_home">
+
+    </item>
+    <item
+        android:id="@+id/store"
+        android:title="store"
+        android:icon="@drawable/ic_store">
+
+    </item>
+    <item
+        android:id="@+id/goLive"
+        android:title="go live"
+        android:icon="@drawable/ic_golive"
+        >
+
+    </item>
+    <item
+        android:id="@+id/orders"
+        android:title="Orders"
+        android:icon="@drawable/store_icon"
+        >
+
+    </item>
+    <item
+        android:id="@+id/profile"
+        android:title="profile"
+        android:icon="@drawable/ic_profile"
+        >
+
+    </item>
+
+
+</menu>

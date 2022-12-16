@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single"
+        android:id="@+id/group1">
+        <item android:id="@+id/nav_Payment"
+            android:icon="@drawable/ic_payment"
+            android:title="Payment Methods">
+        </item>
+        <item android:id="@+id/nav_drawer1"
+            android:icon="@drawable/ic_terms"
+            android:title="Terms And Conditions">
+        </item>
+        <item android:id="@+id/nav_Privacy"
+            android:icon="@drawable/ic_privacy"
+            android:title="Privacy Policy">
+        </item>
+        <item android:id="@+id/nav_Policy"
+            android:icon="@drawable/ic_setting"
+            android:title="Settings">
+
+        </item>
+
+        <item android:id="@+id/nav_share"
+            android:icon="@drawable/ic_share"
+            android:title="Share">
+
+        </item>
+        </group>
+
+
+</menu>
