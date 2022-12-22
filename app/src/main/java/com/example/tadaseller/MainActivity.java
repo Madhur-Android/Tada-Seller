@@ -7,12 +7,13 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.tadaseller.Fragments.HomeFragment;
+import com.example.tadaseller.Fragments.MyProfileFragment;
 import com.example.tadaseller.Fragments.OrdersFragment;
+import com.example.tadaseller.Fragments.StoreFragment;
 import com.example.tadaseller.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.container,new HomeFragment()).commit();
+        transaction.replace(R.id.recyclerview,new HomeFragment()).commit();
 
         binding.bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -41,11 +42,21 @@ public class MainActivity extends AppCompatActivity {
                 {
                     case R.id.home:
                         FragmentTransaction transactionH=getSupportFragmentManager().beginTransaction();
-                        transactionH.replace(R.id.container,new HomeFragment()).commit();
+                        transactionH.replace(R.id.recyclerview,new HomeFragment()).commit();
+                        break;
+                    case R.id.store:
+                        FragmentTransaction transactionS=getSupportFragmentManager().beginTransaction();
+                        transactionS.replace(R.id.recyclerview,new StoreFragment()).commit();
                         break;
                     case R.id.orders:
                         FragmentTransaction transactionO = getSupportFragmentManager().beginTransaction();
-                        transactionO.replace(R.id.container,new OrdersFragment()).commit();
+                        transactionO.replace(R.id.recyclerview,new OrdersFragment()).commit();
+                        break;
+                    case R.id.profile:
+                        FragmentTransaction transactionP=getSupportFragmentManager().beginTransaction();
+                        transactionP.replace(R.id.recyclerview,new MyProfileFragment()).commit();
+                        break;
+
                 }
 
                 return true;
