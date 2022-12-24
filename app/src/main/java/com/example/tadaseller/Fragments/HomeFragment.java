@@ -162,18 +162,18 @@ public class HomeFragment extends Fragment {
         init();
 
         // code for gradient textView ( TADA )
-        TextPaint paint = binding.tadaTV.getPaint();
-        float width = paint.measureText("Tada");
-        Shader textShader = new LinearGradient(0, 0, width, binding.tadaTV.getTextSize(),
-                new int[]{
-                        Color.parseColor("#FE0187"),
-                        Color.parseColor("#FF5A3A"),
-                }, null, Shader.TileMode.CLAMP);
-        binding.tadaTV.getPaint().setShader(textShader);
+//        TextPaint paint = binding.tadaTV.getPaint();
+//        float width = paint.measureText("Tada");
+//        Shader textShader = new LinearGradient(0, 0, width, binding.tadaTV.getTextSize(),
+//                new int[]{
+//                        Color.parseColor("#FE0187"),
+//                        Color.parseColor("#FF5A3A"),
+//                }, null, Shader.TileMode.CLAMP);
+//        binding.tadaTV.getPaint().setShader(textShader);
 
-        paint = binding.sellerNameTv.getPaint();
-        width = paint.measureText(binding.sellerNameTv.getText().toString());
-        textShader = new LinearGradient(0, 0, width, binding.sellerNameTv.getTextSize(),
+        TextPaint paint = binding.sellerNameTv.getPaint();
+        float width = paint.measureText(binding.sellerNameTv.getText().toString());
+        Shader textShader = new LinearGradient(0, 0, width, binding.sellerNameTv.getTextSize(),
                 new int[]{
                         Color.parseColor("#FE0187"),
                         Color.parseColor("#FF5A3A"),
