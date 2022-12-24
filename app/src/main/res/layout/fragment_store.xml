@@ -13,12 +13,13 @@
         android:layout_height="wrap_content"
         android:text="0 My Store"
         android:textColor="@color/white"
-        android:textSize="22sp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/cl2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="12dp"
         />
 
     <TextView
@@ -34,7 +35,7 @@
         android:layout_marginEnd="20dp"
         app:layout_constraintBottom_toTopOf="@+id/cl2"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="12dp"
+        app:layout_constraintTop_toTopOf="parent"
         />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,7 +46,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="91dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/top_corner_round_white">
 
         <androidx.recyclerview.widget.RecyclerView

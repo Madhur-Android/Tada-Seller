@@ -104,7 +104,6 @@ public class AddProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding= ActivityAddProductBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        getSupportActionBar().hide();
 
         binding.saveBtn.setOnClickListener(v -> {
             saveProduct();

@@ -12,6 +12,7 @@
     <color name="colorAccent">#39FF14</color>
     <color name="colorPrimaryDark">#004D40</color>
     <color name="purple">#491CFD</color>
+    <color name="trans">#00491CFD</color>
 
 
 </resources>
