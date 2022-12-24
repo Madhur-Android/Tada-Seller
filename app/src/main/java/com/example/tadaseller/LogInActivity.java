@@ -8,18 +8,56 @@ import android.graphics.LinearGradient;
 import android.graphics.Shader;
 import android.os.Bundle;
 import android.text.TextPaint;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.tadaseller.ApiServices.ApiService;
+import com.example.tadaseller.AppModals.SellerLogin;
+import com.example.tadaseller.Retrofits.RetrofitService;
 import com.example.tadaseller.databinding.ActivityLogInBinding;
 
-public class LogInActivity extends AppCompatActivity {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class  LogInActivity extends AppCompatActivity {
 
     ActivityLogInBinding binding;
     TextView forgotPassword_TV, create_account_btn;
     EditText email_ET, password_ET;
+    ApiService apiService;
+
+    public void login(String email,String password)
+    {
+        apiService= RetrofitService.getRetrofit().create(ApiService.class);
+
+        Call<SellerLogin> call=apiService.loginSeller(email,password);
+        call.enqueue(new Callback<SellerLogin>() {
+            @Override
+            public void onResponse(Call<SellerLogin> call, Response<SellerLogin> response) {
+                if(response.body().getStatus_code()==200)
+                {
+                    Log.i("Login Success Message",response.body().getMessage());
+                    Intent i = new Intent (getApplicationContext (), MainActivity.class);
+                    startActivity (i);
+                    Toast.makeText (LogInActivity.this, "Welcome", Toast.LENGTH_SHORT).show ();
+                    finish();
+                }
+                else
+                {
+                    Toast.makeText(LogInActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SellerLogin> call, Throwable t) {
+                Toast.makeText(LogInActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +91,11 @@ public class LogInActivity extends AppCompatActivity {
                 password_ET.setError ("Enter Your Password");
                 password_ET.requestFocus ();
             } else {
-                Toast.makeText (this, "Welcome", Toast.LENGTH_SHORT).show ();
-                Intent i = new Intent (getApplicationContext (), MainActivity.class);
-                startActivity (i);
+
+                    login(email,password);
+//                Toast.makeText (this, "Welcome", Toast.LENGTH_SHORT).show ();
+//                Intent i = new Intent (getApplicationContext (), MainActivity.class);
+//                startActivity (i);
             }
         });
 
