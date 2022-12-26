@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
         <item android:id="@+id/nav_payment_methods"
             android:icon="@drawable/ic_payment"
             android:title="Payment Methods">
@@ -15,13 +16,9 @@
             android:title="Privacy Policy">
         </item>
 
-        <item android:id="@+id/jav_settings"
+        <item android:id="@+id/nav_settings"
             android:icon="@drawable/ic_setting"
             android:title="Settings">
         </item>
 
-        <item android:id="@+id/nav_share"
-            android:icon="@drawable/ic_share"
-            android:title="Share">
-        </item>
 </menu>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/ThemeOverlay.AppCompat.Dark"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="120dp"
     android:background="@color/white"
     android:padding="25dp">
 
@@ -21,9 +21,9 @@
 
     <ImageView
         android:id="@+id/tada_logo"
-        android:layout_width="62dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="50dp"
+        android:layout_width="65dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="40dp"
         android:src="@drawable/logo_tada"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -30,16 +30,15 @@ public class  LogInActivity extends AppCompatActivity {
     EditText email_ET, password_ET;
     ApiService apiService;
 
-    public void login(String email,String password)
-    {
+    public void login(String email,String password) {
+
         apiService= RetrofitService.getRetrofit().create(ApiService.class);
 
         Call<SellerLogin> call=apiService.loginSeller(email,password);
         call.enqueue(new Callback<SellerLogin>() {
             @Override
             public void onResponse(Call<SellerLogin> call, Response<SellerLogin> response) {
-                if(response.body().getStatus_code()==200)
-                {
+                if(response.body().getStatus_code()==200) {
                     Log.i("Login Success Message",response.body().getMessage());
                     Intent i = new Intent (getApplicationContext (), MainActivity.class);
                     startActivity (i);
@@ -64,7 +63,7 @@ public class  LogInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding=ActivityLogInBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        getSupportActionBar().hide();
+//        getSupportActionBar().hide();
 
         forgotPassword_TV = findViewById (R.id.forgotPassword_TV);
         email_ET = findViewById (R.id.email_ET);

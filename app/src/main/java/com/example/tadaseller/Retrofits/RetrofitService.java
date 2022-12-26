@@ -7,16 +7,16 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitService {
 
-    private static Retrofit retrofit;
     public static final String BASEURL = "https://tada.progressiveaidata.in/api/";
+    private static Retrofit retrofit;
 
     public static Retrofit getRetrofit() {
 
         if (retrofit == null) {
-            retrofit = new Retrofit.Builder()
-                    .baseUrl(BASEURL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
+            retrofit = new Retrofit.Builder ()
+                    .baseUrl (BASEURL)
+                    .addConverterFactory (GsonConverterFactory.create ())
+                    .build ();
         }
 
         return retrofit;

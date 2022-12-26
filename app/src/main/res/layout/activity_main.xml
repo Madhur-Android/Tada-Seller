@@ -17,14 +17,6 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:openDrawer="start">
 
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/drawernavigationView"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:fitsSystemWindows="true"
-            app:headerLayout="@layout/header"
-            app:menu="@menu/drawer_menu" />
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -34,7 +26,9 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
+                android:layout_height="50dp"
+                app:subtitleTextColor="#FFFFFF"
+                app:titleTextColor="#FFFEFE"
                 android:background="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -74,6 +68,20 @@
 
             </androidx.appcompat.widget.Toolbar>
 
+            <TextView
+                android:id="@+id/tv_tada"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tada"
+                android:textColor="@color/white"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="6dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/toolbar"
+                app:layout_constraintStart_toStartOf="parent" />
+
             <FrameLayout
                 android:id="@+id/recyclerview"
                 android:layout_width="match_parent"
@@ -98,5 +106,15 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/drawernavigationView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            app:headerLayout="@layout/header"
+            app:menu="@menu/drawer_menu" />
+
     </androidx.drawerlayout.widget.DrawerLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

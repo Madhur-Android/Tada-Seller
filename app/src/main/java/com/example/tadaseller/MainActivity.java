@@ -3,7 +3,11 @@ package com.example.tadaseller;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.LinearGradient;
+import android.graphics.Shader;
 import android.os.Bundle;
+import android.text.TextPaint;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -25,50 +29,50 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
-    ActivityMainBinding binding;
 
+    ActivityMainBinding binding;
     ActionBarDrawerToggle toggle;
 
     @Override
-    public void onBackPressed() {
-        if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            binding.drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-        setSupportActionBar(binding.toolbar);
+        super.onCreate (savedInstanceState);
+        binding = ActivityMainBinding.inflate (getLayoutInflater ());
+        setContentView (binding.getRoot ());
+        setSupportActionBar (binding.toolbar);
 
-        binding.toolbar.setTitleTextColor(getResources().getColor(R.color.appPink));
 
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.recyclerview, new HomeFragment()).commit();
+        TextPaint paint = binding.tvTada.getPaint();
+        float width = paint.measureText("Tada");
+        Shader textShader = new LinearGradient (0, 0, width, binding.tvTada.getTextSize(),
+                new int[]{
+                        Color.parseColor("#FE0187"),
+                        Color.parseColor("#FF5A3A"),
+                }, null, Shader.TileMode.CLAMP);
+        binding.tvTada.getPaint().setShader(textShader);
 
-        binding.bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+
+        FragmentTransaction transaction = getSupportFragmentManager ().beginTransaction ();
+        transaction.replace (R.id.recyclerview, new HomeFragment ()).commit ();
+
+        binding.bottomNavigationView.setOnItemSelectedListener (new NavigationBarView.OnItemSelectedListener () {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
+                switch (item.getItemId ()) {
                     case R.id.home:
-                        FragmentTransaction transactionH = getSupportFragmentManager().beginTransaction();
-                        transactionH.replace(R.id.recyclerview, new HomeFragment()).commit();
+                        FragmentTransaction transactionH = getSupportFragmentManager ().beginTransaction ();
+                        transactionH.replace (R.id.recyclerview, new HomeFragment ()).commit ();
                         break;
                     case R.id.store:
-                        FragmentTransaction transactionS = getSupportFragmentManager().beginTransaction();
-                        transactionS.replace(R.id.recyclerview, new StoreFragment()).commit();
+                        FragmentTransaction transactionS = getSupportFragmentManager ().beginTransaction ();
+                        transactionS.replace (R.id.recyclerview, new StoreFragment ()).commit ();
                         break;
                     case R.id.orders:
-                        FragmentTransaction transactionO = getSupportFragmentManager().beginTransaction();
-                        transactionO.replace(R.id.recyclerview, new OrdersFragment()).commit();
+                        FragmentTransaction transactionO = getSupportFragmentManager ().beginTransaction ();
+                        transactionO.replace (R.id.recyclerview, new OrdersFragment ()).commit ();
                         break;
                     case R.id.profile:
-                        FragmentTransaction transactionP = getSupportFragmentManager().beginTransaction();
-                        transactionP.replace(R.id.recyclerview, new MyProfileFragment()).commit();
+                        FragmentTransaction transactionP = getSupportFragmentManager ().beginTransaction ();
+                        transactionP.replace (R.id.recyclerview, new MyProfileFragment ()).commit ();
                         break;
                 }
                 return true;
@@ -76,30 +80,44 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        toggle = new ActionBarDrawerToggle(this, binding.drawerLayout, binding.toolbar, R.string.openDrawer, R.string.closeDrawer);
-        binding.drawerLayout.addDrawerListener(toggle);
+        toggle = new ActionBarDrawerToggle (this, binding.drawerLayout, binding.toolbar, R.string.openDrawer, R.string.closeDrawer);
+        binding.drawerLayout.addDrawerListener (toggle);
         toggle.getDrawerArrowDrawable ().setColor (getResources ().getColor (R.color.white));
-        toggle.syncState();
+        toggle.syncState ();
 
 
         // opening navigation drawer
-       binding.drawernavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-           @Override
-           public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-               return false;
-           }
-       });
+        binding.drawernavigationView.setNavigationItemSelectedListener (new NavigationView.OnNavigationItemSelectedListener () {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId ()) {
+                    case R.id.nav_payment_methods:
+                        Toast.makeText (MainActivity.this, "Payment button clicked", Toast.LENGTH_SHORT).show ();
+                        break;
+                    case R.id.nav_terms_and_conditions:
+                        Toast.makeText (MainActivity.this, "terms and condition button clicked", Toast.LENGTH_SHORT).show ();
+                        break;
 
+                    case R.id.nav_privacy_policy:
+                        Toast.makeText (MainActivity.this, "privacy policy button clicked", Toast.LENGTH_SHORT).show ();
+                        break;
 
-//                case R.id.share:
-//                    Intent sharingIntent = new Intent(Intent.ACTION_SEND);
-//                    sharingIntent.setType("text/plain");
-//                    String shareBody = "http://play.google.com/store/apps/detail?id=" + getPackageName();
-//                    String shareSub = "Try now";
-//                    sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSub);
-//                    sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
-//                    startActivity(Intent.createChooser(sharingIntent, "Share using"));
-//                    break;
+                    case R.id.nav_settings:
+                        Toast.makeText (MainActivity.this, "setting button clicked", Toast.LENGTH_SHORT).show ();
+                        break;
+                }
+                return false;
+            }
+        });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (binding.drawerLayout.isDrawerOpen (GravityCompat.START)) {
+            binding.drawerLayout.closeDrawer (GravityCompat.START);
+        } else {
+            super.onBackPressed ();
+        }
     }
 }
