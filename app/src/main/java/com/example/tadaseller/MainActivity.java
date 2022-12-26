@@ -23,6 +23,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.tadaseller.Fragments.HomeFragment;
 import com.example.tadaseller.Fragments.MyProfileFragment;
 import com.example.tadaseller.Fragments.OrdersFragment;
+import com.example.tadaseller.Fragments.SelectProductFragment;
 import com.example.tadaseller.Fragments.StoreFragment;
 import com.example.tadaseller.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationBarView;
@@ -35,15 +36,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate (savedInstanceState);
-        binding = ActivityMainBinding.inflate (getLayoutInflater ());
-        setContentView (binding.getRoot ());
-        setSupportActionBar (binding.toolbar);
+        super.onCreate(savedInstanceState);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        setSupportActionBar(binding.toolbar);
 
 
         TextPaint paint = binding.tvTada.getPaint();
         float width = paint.measureText("Tada");
-        Shader textShader = new LinearGradient (0, 0, width, binding.tvTada.getTextSize(),
+        Shader textShader = new LinearGradient(0, 0, width, binding.tvTada.getTextSize(),
                 new int[]{
                         Color.parseColor("#FE0187"),
                         Color.parseColor("#FF5A3A"),
@@ -51,28 +52,32 @@ public class MainActivity extends AppCompatActivity {
         binding.tvTada.getPaint().setShader(textShader);
 
 
-        FragmentTransaction transaction = getSupportFragmentManager ().beginTransaction ();
-        transaction.replace (R.id.recyclerview, new HomeFragment ()).commit ();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.recyclerview, new HomeFragment()).commit();
 
-        binding.bottomNavigationView.setOnItemSelectedListener (new NavigationBarView.OnItemSelectedListener () {
+        binding.bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId ()) {
+                switch (item.getItemId()) {
                     case R.id.home:
-                        FragmentTransaction transactionH = getSupportFragmentManager ().beginTransaction ();
-                        transactionH.replace (R.id.recyclerview, new HomeFragment ()).commit ();
+                        FragmentTransaction transactionH = getSupportFragmentManager().beginTransaction();
+                        transactionH.replace(R.id.recyclerview, new HomeFragment()).commit();
                         break;
                     case R.id.store:
-                        FragmentTransaction transactionS = getSupportFragmentManager ().beginTransaction ();
-                        transactionS.replace (R.id.recyclerview, new StoreFragment ()).commit ();
+                        FragmentTransaction transactionS = getSupportFragmentManager().beginTransaction();
+                        transactionS.replace(R.id.recyclerview, new StoreFragment()).commit();
                         break;
                     case R.id.orders:
-                        FragmentTransaction transactionO = getSupportFragmentManager ().beginTransaction ();
-                        transactionO.replace (R.id.recyclerview, new OrdersFragment ()).commit ();
+                        FragmentTransaction transactionO = getSupportFragmentManager().beginTransaction();
+                        transactionO.replace(R.id.recyclerview, new OrdersFragment()).commit();
                         break;
                     case R.id.profile:
-                        FragmentTransaction transactionP = getSupportFragmentManager ().beginTransaction ();
-                        transactionP.replace (R.id.recyclerview, new MyProfileFragment ()).commit ();
+                        FragmentTransaction transactionP = getSupportFragmentManager().beginTransaction();
+                        transactionP.replace(R.id.recyclerview, new MyProfileFragment()).commit();
+                        break;
+                    case R.id.goLive:
+                        FragmentTransaction transactionL = getSupportFragmentManager().beginTransaction();
+                        transactionL.replace(R.id.recyclerview, new SelectProductFragment()).commit();
                         break;
                 }
                 return true;
@@ -80,32 +85,41 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        toggle = new ActionBarDrawerToggle (this, binding.drawerLayout, binding.toolbar, R.string.openDrawer, R.string.closeDrawer);
-        binding.drawerLayout.addDrawerListener (toggle);
-        toggle.getDrawerArrowDrawable ().setColor (getResources ().getColor (R.color.white));
-        toggle.syncState ();
+        toggle = new ActionBarDrawerToggle(this, binding.drawerLayout, binding.toolbar, R.string.openDrawer, R.string.closeDrawer);
+        binding.drawerLayout.addDrawerListener(toggle);
+        toggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.white));
+        toggle.syncState();
 
 
         // opening navigation drawer
-        binding.drawernavigationView.setNavigationItemSelectedListener (new NavigationView.OnNavigationItemSelectedListener () {
+        binding.drawernavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId ()) {
+                switch (menuItem.getItemId()) {
                     case R.id.nav_payment_methods:
-                        Toast.makeText (MainActivity.this, "Payment button clicked", Toast.LENGTH_SHORT).show ();
+                        Intent intent = new Intent(MainActivity.this, PaymentMethodsActivity.class);
+                        startActivity(intent);
+                        //  Toast.makeText (MainActivity.this, "Payment button clicked", Toast.LENGTH_SHORT).show ();
                         break;
                     case R.id.nav_terms_and_conditions:
-                        Toast.makeText (MainActivity.this, "terms and condition button clicked", Toast.LENGTH_SHORT).show ();
+                        Intent intent1 = new Intent(MainActivity.this, TermsAndConditionsActivity.class);
+                        startActivity(intent1);
+                        //   Toast.makeText (MainActivity.this, "terms and condition button clicked", Toast.LENGTH_SHORT).show ();
                         break;
 
                     case R.id.nav_privacy_policy:
-                        Toast.makeText (MainActivity.this, "privacy policy button clicked", Toast.LENGTH_SHORT).show ();
+                        Intent intent2 = new Intent(MainActivity.this, PrivacyPolicyActivity.class);
+                        startActivity(intent2);
+                        //  Toast.makeText (MainActivity.this, "privacy policy button clicked", Toast.LENGTH_SHORT).show ();
                         break;
 
                     case R.id.nav_settings:
-                        Toast.makeText (MainActivity.this, "setting button clicked", Toast.LENGTH_SHORT).show ();
+                        Intent intent3 = new Intent(MainActivity.this, SettingsActivity.class);
+                        startActivity(intent3);
+                        // Toast.makeText (MainActivity.this, "setting button clicked", Toast.LENGTH_SHORT).show ();
                         break;
                 }
+
                 return false;
             }
         });
@@ -114,10 +128,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (binding.drawerLayout.isDrawerOpen (GravityCompat.START)) {
-            binding.drawerLayout.closeDrawer (GravityCompat.START);
+        if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            binding.drawerLayout.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed ();
+            super.onBackPressed();
         }
     }
 }
