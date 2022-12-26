@@ -1,24 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-        <item android:id="@+id/nav_payment_methods"
-            android:icon="@drawable/ic_payment"
-            android:title="Payment Methods">
-        </item>
+    <item
+        android:id="@+id/nav_payment_methods"
+        android:icon="@drawable/ic_payment"
+        android:title="Payment Methods"></item>
 
-        <item android:id="@+id/nav_terms_and_conditions"
-            android:icon="@drawable/ic_terms"
-            android:title="Terms And Conditions">
-        </item>
+    <item
+        android:id="@+id/nav_terms_and_conditions"
+        android:icon="@drawable/ic_terms"
+        android:title="Terms And Conditions"></item>
 
-        <item android:id="@+id/nav_privacy_policy"
-            android:icon="@drawable/ic_privacy"
-            android:title="Privacy Policy">
-        </item>
+    <item
+        android:id="@+id/nav_privacy_policy"
+        android:icon="@drawable/ic_privacy"
+        android:title="Privacy Policy"></item>
 
-        <item android:id="@+id/nav_settings"
-            android:icon="@drawable/ic_setting"
-            android:title="Settings">
-        </item>
+    <item
+        android:id="@+id/nav_settings"
+        android:icon="@drawable/ic_setting"
+        android:title="Settings"></item>
+    <item
+        android:id="@+id/logout"
+        android:title="Logout"
+        android:icon="@drawable/ic_logout">
+
+    </item>
 
 </menu>
