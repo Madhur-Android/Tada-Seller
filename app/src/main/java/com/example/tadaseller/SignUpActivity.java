@@ -61,7 +61,7 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivitySignUpBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        getSupportActionBar().hide();
+        
 
         fullname_ET = findViewById(R.id.fullname_ET);
         email_ET = findViewById(R.id.email_ET);
