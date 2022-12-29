@@ -24,7 +24,6 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding=ActivitySplashScreenBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        getSupportActionBar().hide();
 
         TextPaint paint = binding.tadaLogo.getPaint();
         float width = paint.measureText("Tada");

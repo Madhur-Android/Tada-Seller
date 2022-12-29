@@ -7,28 +7,28 @@
     android:layout_height="match_parent"
     tools:context=".GoLiveActivity">
 
-    <!-- <VideoView
-   android:layout_width="match_parent"
-   android:layout_height="match_parent"
-   app:layout_constraintBottom_toBottomOf="parent"
-   app:layout_constraintEnd_toEndOf="parent"
-   app:layout_constraintHorizontal_bias="0.0"
-   app:layout_constraintStart_toStartOf="parent"
-   app:layout_constraintTop_toTopOf="parent"
-   app:layout_constraintVertical_bias="0.0" />
--->
-
-    <ImageView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/textureLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/live_girl"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="0dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toTopOf="@+id/lastConstraint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" >
+        <TextureView
+            android:id="@+id/cameraView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/back_btn"
@@ -42,15 +42,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <ImageView
         android:id="@+id/charge_btn"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_marginStart="15dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="15dp"
         android:background="#00FFFFFF"
-        android:drawableStart="@drawable/ic_charge"
+        android:src="@drawable/ic_charge_off"
         android:paddingStart="9dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -65,7 +64,7 @@
         android:orientation="vertical"
         android:paddingHorizontal="4dp"
         android:paddingVertical="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayoutbtm"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayoutBtn"
         app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
@@ -119,7 +118,7 @@
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayoutbtm"
+        android:id="@+id/constraintLayoutBtn"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginBottom="15dp"
@@ -151,13 +150,13 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="70dp"
             android:drawableLeft="@drawable/ic_setting"
-            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout2"
-            app:layout_constraintEnd_toStartOf="@+id/constraintLayout2"
+            app:layout_constraintBottom_toBottomOf="@+id/goLayout"
+            app:layout_constraintEnd_toStartOf="@+id/goLayout"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/constraintLayout2" />
+            app:layout_constraintTop_toTopOf="@+id/goLayout" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout2"
+            android:id="@+id/goLayout"
             android:layout_width="47dp"
             android:layout_height="47dp"
             app:layout_constraintBottom_toTopOf="@+id/txtStart"
@@ -209,10 +208,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="70dp"
             android:drawableLeft="@drawable/ic_switch_camera"
-            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout2"
+            app:layout_constraintBottom_toBottomOf="@+id/goLayout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/constraintLayout2"
-            app:layout_constraintTop_toTopOf="@+id/constraintLayout2" />
+            app:layout_constraintStart_toEndOf="@+id/goLayout"
+            app:layout_constraintTop_toTopOf="@+id/goLayout" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
