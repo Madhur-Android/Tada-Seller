@@ -5,9 +5,8 @@
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-feature android:name="android.hardware.camera2" />
-    <uses-permission android:name="android.permission.FLASHLIGHT" />
-    <uses-feature android:name="android.hardware.camera.flash" />
+
+    <uses-feature android:name="android.hardware.camera" />
 
 
     <application
@@ -65,7 +64,6 @@
         <activity
             android:name=".GoLiveActivity"
             android:exported="true">
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -105,7 +103,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".SignUpActivity"
             android:exported="true">
@@ -113,38 +110,34 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        <meta-data
-            android:name="android.app.lib_name"
-            android:value="" />
-    </activity>
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".LogInActivity"
+            android:exported="true">
 
-    <activity
-        android:name=".LogInActivity"
-        android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
 
-        <meta-data
-            android:name="android.app.lib_name"
-            android:value="" />
-    </activity>
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+    </application>
 
-    <activity
-        android:name=".MainActivity"
-        android:exported="true">
-
-        <meta-data
-            android:name="android.app.lib_name"
-            android:value="" />
-    </activity>
-
-</application>
-
-    </manifest>
+</manifest>

@@ -55,67 +55,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="50dp"
-        android:background="@drawable/bg_react_view"
-        android:orientation="vertical"
-        android:paddingHorizontal="4dp"
-        android:paddingVertical="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayoutBtn"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <ImageView
-            android:layout_width="33dp"
-            android:layout_height="33dp"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="5dp"
-            android:layout_marginTop="5dp"
-            android:background="#00000000"
-            android:src="@drawable/ic_like" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="5dp"
-            android:layout_marginTop="1dp"
-            android:background="#00000000"
-            android:text="12.5k"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="14sp" />
-
-        <ImageView
-            android:layout_width="33dp"
-            android:layout_height="33dp"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="5dp"
-            android:layout_marginTop="18dp"
-            android:background="#00000000"
-            android:src="@drawable/ic_comment" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="5dp"
-            android:layout_marginTop="1dp"
-            android:background="#00000000"
-            android:text="12.5k"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="14sp" />
-
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="5dp"
-            android:layout_marginTop="18dp"
-            android:background="#00000000"
-            android:src="@drawable/ic_share" />
-    </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayoutBtn"
@@ -204,6 +143,7 @@
 
 
         <TextView
+            android:id="@+id/switchCamera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="70dp"
