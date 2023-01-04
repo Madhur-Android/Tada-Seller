@@ -1,20 +1,32 @@
 package com.example.tadaseller.AppModals;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class USERDATA {
 
-    private int user_id;
+    @SerializedName("user_id")
+    @Expose
+    private Integer userId;
+    @SerializedName("name")
+    @Expose
     private String name;
+    @SerializedName("email")
+    @Expose
     private String email;
-    private String mobile_no;
-    private String role;
-    private String user_image;
+    @SerializedName("mobile_no")
+    @Expose
+    private Object mobileNo;
+    @SerializedName("date of birth")
+    @Expose
+    private Object dateOfBirth;
 
-    public int getUser_id() {
-        return user_id;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getName() {
@@ -33,27 +45,20 @@ public class USERDATA {
         this.email = email;
     }
 
-    public String getMobile_no() {
-        return mobile_no;
+    public Object getMobileNo() {
+        return mobileNo;
     }
 
-    public void setMobile_no(String mobile_no) {
-        this.mobile_no = mobile_no;
+    public void setMobileNo(Object mobileNo) {
+        this.mobileNo = mobileNo;
     }
 
-    public String getRole() {
-        return role;
+    public Object getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setDateOfBirth(Object dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
-    public String getUser_image() {
-        return user_image;
-    }
-
-    public void setUser_image(String user_image) {
-        this.user_image = user_image;
-    }
 }

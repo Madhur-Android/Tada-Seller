@@ -42,8 +42,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/charge_btn"
+    <ImageButton
+        android:id="@+id/torch_btn"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginTop="30dp"

@@ -31,73 +31,7 @@ public class AddProductActivity extends AppCompatActivity {
     public static final String EXTRA_SWITCH="com.example.tadaseller.EXTRA_SWITCH";
     public static final String EXTRA_STATUS="com.example.tadaseller.EXTRA_STATUS";
 
-    private void saveProduct()
-    {
-        String pro_name=binding.nameEt.getText().toString();
-        String pro_desc=binding.priceEt.getText().toString();
-        String pro_color=binding.colorEt.getText().toString();
-        int pro_price=Integer.valueOf(binding.priceEt.getText().toString());
-        String pro_size=binding.sizeEt.getText().toString();
-        int pro_quantity=Integer.valueOf(binding.quantityEt.getText().toString());
-        String pro_category=binding.categoryEt.getText().toString();
-        String pro_type=binding.typeEt.getText().toString();
-        boolean pro_switch=binding.switcher.isSelected();
-        String pro_status=(pro_switch) ? "public" : "draft";
 
-
-        if (binding.nameEt.getText().toString().isEmpty()) {
-            binding.nameEt.setError ("Please Enter Product Name");
-            binding.nameEt.requestFocus ();
-        }
-        else if (binding.descriptionEt.getText().toString().isEmpty()) {
-            binding.descriptionEt.setError ("Please Enter Description");
-            binding.descriptionEt.requestFocus ();
-        }
-        else if (binding.priceEt.getText().toString().isEmpty()) {
-            binding.priceEt.setError ("Please Enter Price");
-            binding.priceEt.requestFocus ();
-        }
-        else if (binding.colorEt.getText().toString().isEmpty()) {
-            binding.colorEt.setError ("Please Enter Color");
-            binding.colorEt.requestFocus ();
-        }
-        else if (binding.sizeEt.getText().toString().isEmpty()) {
-            binding.sizeEt.setError ("Please Enter Size");
-            binding.sizeEt.requestFocus ();
-        }
-        else if (binding.quantityEt.getText().toString().isEmpty()) {
-            binding.quantityEt.setError ("Please Enter Quantity");
-            binding.quantityEt.requestFocus ();
-        }
-        else if (binding.categoryEt.getText().toString().isEmpty()) {
-            binding.categoryEt.setError ("Please Enter Category");
-            binding.categoryEt.requestFocus ();
-        }
-        else if (binding.typeEt.getText().toString().isEmpty()) {
-            binding.typeEt.setError ("Please Enter Type");
-            binding.typeEt.requestFocus ();
-        }
-        else if (binding.first.getDrawable()==null)
-        {
-            Toast.makeText(this, "please upload product image", Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Intent data=new Intent();
-            data.putExtra(EXTRA_NAME,pro_name);
-            data.putExtra(EXTRA_DESCRIPTION,pro_desc);
-            data.putExtra(EXTRA_COLOR,pro_color);
-            data.putExtra(EXTRA_PRICE,pro_price);
-            data.putExtra(EXTRA_SIZE,pro_size);
-            data.putExtra(EXTRA_QUANTITY,pro_quantity);
-            data.putExtra(EXTRA_CATEGORY,pro_category);
-            data.putExtra(EXTRA_TYPE,pro_type);
-            data.putExtra(EXTRA_SWITCH,pro_switch);
-            data.putExtra(EXTRA_STATUS,pro_status);
-
-            setResult(RESULT_OK,data);
-            finish();
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -192,9 +126,77 @@ public class AddProductActivity extends AppCompatActivity {
         });
     }
 
+    private void saveProduct() {
+        String pro_name=binding.nameEt.getText().toString();
+        String pro_desc=binding.priceEt.getText().toString();
+        String pro_color=binding.colorEt.getText().toString();
+        int pro_price=Integer.parseInt (binding.priceEt.getText().toString());
+        String pro_size=binding.sizeEt.getText().toString();
+        int pro_quantity=Integer.parseInt (binding.quantityEt.getText().toString());
+        String pro_category=binding.categoryEt.getText().toString();
+        String pro_type=binding.typeEt.getText().toString();
+        boolean pro_switch=binding.switcher.isSelected();
+        String pro_status=(pro_switch) ? "public" : "draft";
+
+
+        if (binding.nameEt.getText().toString().isEmpty()) {
+            binding.nameEt.setError ("Please Enter Product Name");
+            binding.nameEt.requestFocus ();
+        }
+        else if (binding.descriptionEt.getText().toString().isEmpty()) {
+            binding.descriptionEt.setError ("Please Enter Description");
+            binding.descriptionEt.requestFocus ();
+        }
+        else if (binding.priceEt.getText().toString().isEmpty()) {
+            binding.priceEt.setError ("Please Enter Price");
+            binding.priceEt.requestFocus ();
+        }
+        else if (binding.colorEt.getText().toString().isEmpty()) {
+            binding.colorEt.setError ("Please Enter Color");
+            binding.colorEt.requestFocus ();
+        }
+        else if (binding.sizeEt.getText().toString().isEmpty()) {
+            binding.sizeEt.setError ("Please Enter Size");
+            binding.sizeEt.requestFocus ();
+        }
+        else if (binding.quantityEt.getText().toString().isEmpty()) {
+            binding.quantityEt.setError ("Please Enter Quantity");
+            binding.quantityEt.requestFocus ();
+        }
+        else if (binding.categoryEt.getText().toString().isEmpty()) {
+            binding.categoryEt.setError ("Please Enter Category");
+            binding.categoryEt.requestFocus ();
+        }
+        else if (binding.typeEt.getText().toString().isEmpty()) {
+            binding.typeEt.setError ("Please Enter Type");
+            binding.typeEt.requestFocus ();
+        }
+        else if (binding.first.getDrawable()==null)
+        {
+            Toast.makeText(this, "please upload product image", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Intent data=new Intent();
+            data.putExtra(EXTRA_NAME,pro_name);
+            data.putExtra(EXTRA_DESCRIPTION,pro_desc);
+            data.putExtra(EXTRA_COLOR,pro_color);
+            data.putExtra(EXTRA_PRICE,pro_price);
+            data.putExtra(EXTRA_SIZE,pro_size);
+            data.putExtra(EXTRA_QUANTITY,pro_quantity);
+            data.putExtra(EXTRA_CATEGORY,pro_category);
+            data.putExtra(EXTRA_TYPE,pro_type);
+            data.putExtra(EXTRA_SWITCH,pro_switch);
+            data.putExtra(EXTRA_STATUS,pro_status);
+
+            setResult(RESULT_OK,data);
+            finish();
+        }
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         if(resultCode==RESULT_OK  && requestCode==GALLERY_REQUEST_CODE)
         {
             if(binding.first.getTag().equals("empty"))

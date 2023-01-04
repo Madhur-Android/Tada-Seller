@@ -1,10 +1,23 @@
 package com.example.tadaseller.AppModals;
 
-public class SellerLogin {
-    private Boolean status;
-    private int status_code;
-    private String message;
+import android.service.autofill.UserData;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+public class SellerLogin {
+    @SerializedName("status")
+    @Expose
+    private Boolean status;
+    @SerializedName("status_code")
+    @Expose
+    private Integer statusCode;
+    @SerializedName("message")
+    @Expose
+    private String message;
+    @SerializedName("user_data")
+    @Expose
+    private USERDATA userData;
 
     public Boolean getStatus() {
         return status;
@@ -14,12 +27,12 @@ public class SellerLogin {
         this.status = status;
     }
 
-    public int getStatus_code() {
-        return status_code;
+    public Integer getStatusCode() {
+        return statusCode;
     }
 
-    public void setStatus_code(int status_code) {
-        this.status_code = status_code;
+    public void setStatusCode(Integer statusCode) {
+        this.statusCode = statusCode;
     }
 
     public String getMessage() {
@@ -28,5 +41,13 @@ public class SellerLogin {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public USERDATA getUserData() {
+        return userData;
+    }
+
+    public void setUserData(USERDATA userData) {
+        this.userData = userData;
     }
 }

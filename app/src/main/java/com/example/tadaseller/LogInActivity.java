@@ -38,7 +38,7 @@ public class  LogInActivity extends AppCompatActivity {
         call.enqueue(new Callback<SellerLogin>() {
             @Override
             public void onResponse(Call<SellerLogin> call, Response<SellerLogin> response) {
-                if(response.body().getStatus_code()==200) {
+                if(response.body ().getStatusCode () == 202) {
                     Log.i("Login Success Message",response.body().getMessage());
                     Intent i = new Intent (getApplicationContext (), MainActivity.class);
                     startActivity (i);
