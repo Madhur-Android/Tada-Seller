@@ -1,6 +1,5 @@
 package com.example.tadaseller.ApiServices;
 
-import com.example.tadaseller.AppModals.AddProductResponse;
 import com.example.tadaseller.AppModals.SellerForgotPassword;
 import com.example.tadaseller.AppModals.SellerLogin;
 import com.example.tadaseller.AppModals.SellerSignUp;
@@ -30,20 +29,20 @@ public interface ApiService {
     Call<SellerForgotPassword> forgotSeller(
             @Field("email")String email);
 
-    @FormUrlEncoded
-    @POST("add-product")
-    Call<AddProductResponse> addProduct(
-            @Field("product_name")String product_name,
-            @Field ("description")String description,
-            @Field("price")String price,
-            @Field("color")String color,
-            @Field("size")String size,
-            @Field("quantity")String quantity,
-            @Field("category")String category,
-            @Field("product_type")String product_type,
-            @Field("image1")String image1,
-            @Field("image2")String image2,
-            @Field("image3")String image3,
-            @Field("image4")String image4);
+//    @FormUrlEncoded
+//    @POST("add-product")
+//    Call<AddProductResponse> addProduct(
+//            @Field("product_name")String product_name,
+//            @Field ("description")String description,
+//            @Field("price")String price,
+//            @Field("color")String color,
+//            @Field("size")String size,
+//            @Field("quantity")String quantity,
+//            @Field("category")String category,
+//            @Field("product_type")String product_type,
+//            @Field("image1")String image1,
+//            @Field("image2")String image2,
+//            @Field("image3")String image3,
+//            @Field("image4")String image4);
 
 }

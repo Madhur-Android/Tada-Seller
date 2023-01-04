@@ -29,7 +29,8 @@ import com.example.tadaseller.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity {
+public class
+MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
     ActionBarDrawerToggle toggle;
