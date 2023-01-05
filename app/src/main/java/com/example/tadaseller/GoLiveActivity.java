@@ -3,6 +3,7 @@ package com.example.tadaseller;
 import android.Manifest;
 import android.accessibilityservice.AccessibilityService;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.SurfaceTexture;
 import android.hardware.camera2.CameraAccessException;
@@ -29,6 +30,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.example.tadaseller.Fragments.SelectProductFragment;
 import com.example.tadaseller.databinding.ActivityGoLiveActivityBinding;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
@@ -81,7 +83,13 @@ public class GoLiveActivity extends AppCompatActivity {
 
             }
         }).check();
-
+        binding.backBtn.setOnClickListener(v -> {
+           onBackPressed();
+        });
+        binding.goButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(),LiveActivity.class);
+            startActivity(intent);
+        });
 
     }
 
@@ -312,5 +320,13 @@ public class GoLiveActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount() == 0) {
+            this.finish();
+        } else {
+            super.onBackPressed(); //replaced
+        }
+    }
 
 }
