@@ -28,7 +28,7 @@ public class LiveActivity extends AppCompatActivity {
     ActivityLiveBinding binding;
     private final String appId = "4ef6c245464845caab4c5dd52c4bd724";
     // Fill the channel name.
-    private String channelName = "Shubham";
+    private String channelName = "Tada";
     // Fill the temp token generated on Agora Console.
     private String token = "007eJxTYMg3MPtmqn5b7e2BV4bic09kG32+eTbxz3wxlsW3Pa6fOLNCgcEkNc0s2cjE1MTMxMLENDkxMckk2TQlxdQo2SQpxdzIhL1qa3JDICODYfUlVkYGCATx2RmCM0qTMhJzGRgAO7IiUw==";
     // An integer that identifies the local user.

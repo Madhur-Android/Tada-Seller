@@ -12,7 +12,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.example.tadaseller.AppModals.Product;
 import com.example.tadaseller.Dao.ProductDao;
 
-@Database(entities = {Product.class},version = 3)
+@Database(entities = {Product.class},version = 3, exportSchema = false)
 public abstract class ProductDatabase extends RoomDatabase
 {
     private static ProductDatabase instance;
