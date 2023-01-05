@@ -7,31 +7,40 @@
     android:id="@+id/constraintLayout"
     tools:context=".LiveActivity">
 
-    <!-- <VideoView
-   android:layout_width="match_parent"
-   android:layout_height="match_parent"
-   app:layout_constraintBottom_toBottomOf="parent"
-   app:layout_constraintEnd_toEndOf="parent"
-   app:layout_constraintHorizontal_bias="0.0"
-   app:layout_constraintStart_toStartOf="parent"
-   app:layout_constraintTop_toTopOf="parent"
-   app:layout_constraintVertical_bias="0.0" />
--->
-
-    <ImageView
+    <FrameLayout
+        android:id="@+id/local_video_view_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/live_girl"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <FrameLayout
+            android:id="@+id/remote_video_view_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </FrameLayout>
+
+    <Switch
+        android:id="@+id/switch1"
+        android:alpha="0"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:checked="false"
+        android:text="Host"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.23000002" />
+
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/back_btn"
+        android:id="@+id/LeaveButton"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginStart="15dp"
@@ -41,6 +50,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout" />
+
 
     <LinearLayout
         android:id="@+id/linearLayout"
