@@ -92,9 +92,6 @@ public class  LogInActivity extends AppCompatActivity {
             } else {
 
                     login(email,password);
-//                Toast.makeText (this, "Welcome", Toast.LENGTH_SHORT).show ();
-//                Intent i = new Intent (getApplicationContext (), MainActivity.class);
-//                startActivity (i);
             }
         });
 

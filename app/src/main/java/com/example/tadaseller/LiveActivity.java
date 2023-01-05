@@ -1,6 +1,7 @@
 package com.example.tadaseller;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -40,6 +41,7 @@ public class LiveActivity extends AppCompatActivity {
     //SurfaceView to render Remote video in a Container.
     private SurfaceView remoteSurfaceView;
     // A toggle switch to change the User role.
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     private Switch audienceRole;
 
 
@@ -85,7 +87,7 @@ public class LiveActivity extends AppCompatActivity {
 
     private void setupVideoSDKEngine() {
         try {
-            RtcEngineConfig config = new RtcEngineConfig();
+            RtcEngineConfig config = new RtcEngineConfig ();
             config.mContext = getBaseContext();
             config.mAppId = appId;
             config.mEventHandler = mRtcEventHandler;
@@ -125,7 +127,7 @@ public class LiveActivity extends AppCompatActivity {
         remoteSurfaceView = new SurfaceView(getBaseContext());
         remoteSurfaceView.setZOrderMediaOverlay(true);
         container.addView(remoteSurfaceView);
-        agoraEngine.setupRemoteVideo(new VideoCanvas(remoteSurfaceView, VideoCanvas.RENDER_MODE_FIT, uid));
+        agoraEngine.setupRemoteVideo(new VideoCanvas (remoteSurfaceView, VideoCanvas.RENDER_MODE_FIT, uid));
         // Display RemoteSurfaceView.
         remoteSurfaceView.setVisibility(View.VISIBLE);
     }
@@ -141,7 +143,7 @@ public class LiveActivity extends AppCompatActivity {
 
     public void joinChannel() {
         if (checkSelfPermission()) {
-            ChannelMediaOptions options = new ChannelMediaOptions();
+            ChannelMediaOptions options = new ChannelMediaOptions ();
             // For Live Streaming, set the channel profile as LIVE_BROADCASTING.
             options.channelProfile = Constants.CHANNEL_PROFILE_LIVE_BROADCASTING;
             // Set the client role as BROADCASTER or AUDIENCE according to the scenario.

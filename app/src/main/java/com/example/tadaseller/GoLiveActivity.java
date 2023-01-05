@@ -84,7 +84,7 @@ public class GoLiveActivity extends AppCompatActivity {
             }
         }).check();
         binding.backBtn.setOnClickListener(v -> {
-           onBackPressed();
+            onBackPressed();
         });
         binding.goButton.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(),LiveActivity.class);

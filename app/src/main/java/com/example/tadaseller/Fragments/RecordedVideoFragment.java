@@ -24,12 +24,6 @@ public class RecordedVideoFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentRecordedVideoBinding.inflate(inflater, container, false);
 
-        binding.btnBack.setOnClickListener(v -> {
-
-            FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.MainHome, new SelectProductFragment()).commit();
-        });
-
         return binding.getRoot();
     }
 
