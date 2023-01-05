@@ -23,5 +23,6 @@ public class TermsAndConditionsActivity extends AppCompatActivity {
                 finish();
             }
         });
+
     }
 }
