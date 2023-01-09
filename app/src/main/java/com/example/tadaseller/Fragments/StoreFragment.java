@@ -42,12 +42,9 @@ public class StoreFragment extends Fragment {
         binding.recyclerview.setAdapter(adapter);
 
         productViewModel = ViewModelProviders.of(this).get(ProductViewModel.class);
-        productViewModel.getAllProducts().observe(getViewLifecycleOwner(), new Observer<List<Product>>() {
-            @Override
-            public void onChanged(List<Product> products) {
-                // update recyclerview here
-                adapter.setProducts(products);
-            }
+        productViewModel.getAllProducts().observe(getViewLifecycleOwner(), products -> {
+            // update recyclerview here
+            adapter.setProducts(products);
         });
 
         binding.addProductTv.setOnClickListener(v -> {

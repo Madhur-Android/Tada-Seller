@@ -20,9 +20,12 @@ import android.widget.TextView;
 
 import com.example.tadaseller.R;
 import com.example.tadaseller.databinding.FragmentHomeBinding;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
@@ -87,8 +90,8 @@ public class HomeFragment extends Fragment {
 
         binding.tableLayout.addView(tbrow0);
 
-        int i=0;
-        while(i<50) {
+        int i = 0;
+        while (i < 50) {
             TableRow tbrow = new TableRow(getContext());
 
             TextView t1v = new TextView(getContext());
@@ -120,13 +123,10 @@ public class HomeFragment extends Fragment {
             t5v.setTextColor(Color.WHITE);
             t5v.setGravity(Gravity.CENTER);
             t5v.setTextSize(20f);
-            if(i%2==0)
-            {
+            if (i % 2 == 0) {
                 t5v.setText("paid");
                 t5v.setBackgroundResource(R.drawable.paid_layout);
-            }
-            else
-            {
+            } else {
                 t5v.setText("unpaid");
                 t5v.setBackgroundResource(R.drawable.unpaid_layout);
             }
@@ -158,7 +158,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
 
-        // dynamic table layout
+        // function to fill data in dynamic table layout
         init();
 
         // code for gradient textView ( TADA )
@@ -180,33 +180,123 @@ public class HomeFragment extends Fragment {
                 }, null, Shader.TileMode.CLAMP);
         binding.sellerNameTv.getPaint().setShader(textShader);
 
+
         // working of bar graph
+        ArrayList<Double> valuesList = new ArrayList<Double>();
+        valuesList.add((double) 300);
+        valuesList.add((double) 200);
+        valuesList.add((double) 150);
+        valuesList.add((double) 260);
+        valuesList.add((double) 40);
+        valuesList.add((double) 169);
+        valuesList.add((double) 47);
+        valuesList.add((double) 124);
+        valuesList.add((double) 350);
+        valuesList.add((double) 280);
+        valuesList.add((double) 420);
+        valuesList.add((double) 360);
+
         ArrayList<BarEntry> entries = new ArrayList<>();
-        entries.add(new BarEntry(2010, 420));
-        entries.add(new BarEntry(2011, 640));
-        entries.add(new BarEntry(2012, 401));
-        entries.add(new BarEntry(2013, 40));
-        entries.add(new BarEntry(2014, 800));
-        entries.add(new BarEntry(2015, 460));
-        entries.add(new BarEntry(2016, 320));
-        entries.add(new BarEntry(2017, 102));
-        entries.add(new BarEntry(2018, 440));
-        entries.add(new BarEntry(2019, 500));
-        entries.add(new BarEntry(2020, 390));
-        entries.add(new BarEntry(2021, 230));
+        for (int i = 0; i < valuesList.size(); i++) {
+            BarEntry barEntry = new BarEntry(i + 1, valuesList.get(i).floatValue()); //start always from x=1 for the first bar
+            entries.add(barEntry);
+        }
 
-        BarDataSet barDataSet = new BarDataSet(entries, "");
+//        ArrayList<BarEntry> entries = new ArrayList<>();
+//        entries.add(new BarEntry(2010, 420));
+//        entries.add(new BarEntry(2011, 640));
+//        entries.add(new BarEntry(2012, 401));
+//        entries.add(new BarEntry(2013, 40));
+//        entries.add(new BarEntry(2014, 800));
+//        entries.add(new BarEntry(2015, 460));
+//        entries.add(new BarEntry(2016, 320));
+//        entries.add(new BarEntry(2017, 102));
+//        entries.add(new BarEntry(2018, 440));
+//        entries.add(new BarEntry(2019, 500));
+//        entries.add(new BarEntry(2020, 390));
+//        entries.add(new BarEntry(2021, 230));
+
+        final ArrayList<String> xAxisLabel = new ArrayList<>();
+        xAxisLabel.add("Jan"); //this label will be mapped to the 1st index of the valuesList
+        xAxisLabel.add("Feb");
+        xAxisLabel.add("Mar");
+        xAxisLabel.add("Apr");
+        xAxisLabel.add("May");
+        xAxisLabel.add("Jun");
+        xAxisLabel.add("Jul");
+        xAxisLabel.add("Aug");
+        xAxisLabel.add("Sep");
+        xAxisLabel.add("Oct");
+        xAxisLabel.add("Nov");
+        xAxisLabel.add("Dec");
+        xAxisLabel.add(""); //empty label for the last vertical grid line on Y-Right Axis
+
+
+        //initialize xAxis
+        XAxis xAxis = binding.barChart.getXAxis();
+        xAxis.setTextColor(Color.BLACK);
+        xAxis.setTextSize(10);
+        xAxis.setAxisMinimum(0 + 0.5f); //to center the bars inside the vertical grid lines we need + 0.5 step
+        xAxis.setAxisMaximum(entries.size() + 0.5f); //to center the bars inside the vertical grid lines we need + 0.5 step
+        xAxis.setLabelCount(xAxisLabel.size(), true); //draw x labels for 13 vertical grid lines
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setXOffset(0f); //labels x offset in dps
+        xAxis.setYOffset(0f); //labels y offset in dps
+        xAxis.setCenterAxisLabels(true);
+        xAxis.setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float value) {
+                return xAxisLabel.get((int) value);
+            }
+        });
+
+        //initialize Y-Left-Axis
+        YAxis leftAxis = binding.barChart.getAxisLeft();
+        leftAxis.setTextColor(Color.BLACK);
+        leftAxis.setTextSize(12);
+        leftAxis.setAxisMinimum(0);
+        leftAxis.setAxisMaximum(600f);
+        leftAxis.setLabelCount(6, true); //draw y labels (Y-Values) for 4 horizontal grid lines starting from 0 to 6000f (step=2000)
+        leftAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
+
+        //initialize Y-Right-Axis
+        YAxis rightAxis = binding.barChart.getAxisRight();
+        rightAxis.setAxisMinimum(0);
+        rightAxis.setDrawAxisLine(true);
+        rightAxis.setLabelCount(0, true);
+        rightAxis.setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float value) {
+                return "";
+            }
+        });
+
+        binding.barChart.getXAxis().setDrawGridLines(false);
+
+//        binding.barChart.setVisibleXRangeMaximum(10);
+//        binding.barChart.enableScroll();
+//        binding.barChart.moveViewToX(1);
+
+        //set the BarDataSet
+        BarDataSet barDataSet = new BarDataSet(entries, "Months");
+        barDataSet.setFormSize(100f);
+        barDataSet.setDrawValues(false);
+        barDataSet.setValueTextSize(12f);
+
+        //set the BarData to chart
+        BarData data = new BarData(barDataSet);
+        data.setBarWidth(0.5f);
+        binding.barChart.setData(data);
+        binding.barChart.setScaleEnabled(false);
+        binding.barChart.getLegend().setEnabled(false);
+        binding.barChart.setDrawBarShadow(false);
+        binding.barChart.getDescription().setEnabled(false);
+        binding.barChart.setPinchZoom(false);
+        binding.barChart.animateY(1500);
         barDataSet.setColors(ColorTemplate.VORDIPLOM_COLORS);
-        barDataSet.setValueTextColors(Collections.singletonList(Color.BLACK));
-        barDataSet.setValueTextSize(16f);
 
-        BarData barData = new BarData(barDataSet);
 
-        binding.barChart.setFitBars(true);
-        binding.barChart.setData(barData);
-        binding.barChart.getDescription().setText("");
-        binding.barChart.animateY(2000);
-
+        binding.barChart.invalidate();
 
         return binding.getRoot();
     }
