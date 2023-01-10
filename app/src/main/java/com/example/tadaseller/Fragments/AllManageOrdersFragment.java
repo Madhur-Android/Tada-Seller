@@ -23,9 +23,9 @@ public class AllManageOrdersFragment extends Fragment {
     public void init() {
         TableRow tbrow0 = new TableRow(getContext());
 
-        CheckBox checkBox=new CheckBox(getContext());
+        CheckBox checkBox = new CheckBox(getContext());
         tbrow0.addView(checkBox);
-
+      //  checkBox.setBackgroundResource(R.color.black);
         TextView tv0 = new TextView(getContext());
         tv0.setText(" Order No. ");
         tv0.setTextColor(Color.WHITE);
@@ -77,11 +77,11 @@ public class AllManageOrdersFragment extends Fragment {
 
         binding.tableLayout.addView(tbrow0);
 
-        int i=0;
-        while(i<50) {
+        int i = 0;
+        while (i < 50) {
             TableRow tbrow = new TableRow(getContext());
 
-            CheckBox cb=new CheckBox(getContext());
+            CheckBox cb = new CheckBox(getContext());
             tbrow.addView(cb);
             TextView t1v = new TextView(getContext());
             t1v.setText("" + i);
@@ -112,13 +112,10 @@ public class AllManageOrdersFragment extends Fragment {
             t5v.setTextColor(Color.WHITE);
             t5v.setGravity(Gravity.CENTER);
             t5v.setTextSize(20f);
-            if(i%2==0)
-            {
+            if (i % 2 == 0) {
                 t5v.setText("paid");
                 t5v.setBackgroundResource(R.drawable.paid_layout);
-            }
-            else
-            {
+            } else {
                 t5v.setText("unpaid");
                 t5v.setBackgroundResource(R.drawable.unpaid_layout);
             }
@@ -148,7 +145,7 @@ public class AllManageOrdersFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding=FragmentAllManageOrdersBinding.inflate(inflater,container,false);
+        binding = FragmentAllManageOrdersBinding.inflate(inflater, container, false);
 
         // dynamic table layout
         init();

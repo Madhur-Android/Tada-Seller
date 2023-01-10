@@ -9,6 +9,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="35dp"
+        android:id="@+id/btnBack"
         android:layout_height="35dp"
         android:layout_margin="30dp"
         android:background="@drawable/circular_button_layout"
@@ -44,8 +45,8 @@
             android:layout_width="118dp"
             android:layout_height="118dp"
             android:src="@drawable/girl_img"
-            app:civ_border_width="5dp"
-            app:civ_border_color="@color/appPink"
+            app:civ_border_width="1dp"
+            app:civ_border_color="@color/black"
             android:layout_margin="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -54,6 +55,7 @@
             />
 
         <ImageView
+            android:id="@+id/ic_camera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_camera"
@@ -71,6 +73,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="22dp"
+            android:textColorHint="#80000000"
+            app:boxStrokeColor="@color/purple_500"
+            app:hintTextColor="@color/purple_500"
             app:layout_constraintTop_toBottomOf="@id/dp_img"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -80,7 +85,9 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/fname_et"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -89,6 +96,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:textColorHint="#80000000"
+            app:boxStrokeColor="@color/purple_500"
+            app:hintTextColor="@color/purple_500"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/fname_til"
@@ -97,6 +107,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/lname_et"
+                android:inputType="text"
+                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -107,6 +119,9 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColorHint="#80000000"
+            app:boxStrokeColor="@color/purple_500"
+            app:hintTextColor="@color/purple_500"
             android:layout_marginTop="12dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -117,6 +132,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/DOB_et"
                 android:layout_width="match_parent"
+                android:inputType="text"
+                android:textColor="@color/black"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -126,6 +143,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:textColorHint="#80000000"
+            app:boxStrokeColor="@color/purple_500"
+            app:hintTextColor="@color/purple_500"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/DOB_til"
@@ -135,6 +155,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/email_et"
                 android:layout_width="match_parent"
+                android:inputType="text"
+                android:textColor="@color/black"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -144,6 +166,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="15dp"
+            android:textColorHint="#80000000"
+            app:boxStrokeColor="@color/purple_500"
+            app:hintTextColor="@color/purple_500"
             android:layout_marginTop="12dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -154,7 +179,9 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/phone_et"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
