@@ -196,6 +196,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
+            app:tabSelectedTextColor="@color/appPink"
+            app:tabTextColor="#80000000"
             android:background="@drawable/top_round_corner_white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

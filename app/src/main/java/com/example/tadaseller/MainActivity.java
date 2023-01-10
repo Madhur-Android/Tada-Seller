@@ -119,6 +119,10 @@ MainActivity extends AppCompatActivity {
                         startActivity(intent3);
                         // Toast.makeText (MainActivity.this, "setting button clicked", Toast.LENGTH_SHORT).show ();
                         break;
+                    case R.id.logout:
+                        Intent intent4 = new Intent(MainActivity.this, LogInActivity.class);
+                        startActivity(intent4);
+                        finishAffinity();
                 }
 
                 return false;
