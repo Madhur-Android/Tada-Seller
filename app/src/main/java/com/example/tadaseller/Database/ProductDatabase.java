@@ -52,7 +52,7 @@ public abstract class ProductDatabase extends RoomDatabase
         @Override
         protected Void doInBackground(Void... voids) {
 
-            //            productDao.insert(new Product(0,"shirt",100,3,true));
+            //            productDao.insert(new Product(0,"shirt",100,3,true..............));
             //            we can add product to be already shown by the statement shown above
 
             return null;

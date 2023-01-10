@@ -8,13 +8,13 @@
     tools:context=".AddProductActivity">
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/back_Btn"
         android:layout_width="27dp"
         android:layout_height="27dp"
         android:layout_marginStart="30dp"
         android:background="@drawable/circular_button_layout"
         android:drawableStart="@drawable/ic_baseline_arrow_back_24"
         android:paddingStart="1dp"
-        android:id="@+id/back_Btn"
         app:layout_constraintBottom_toTopOf="@id/whitecl"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -33,10 +33,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/whitecl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="70dp"
-        android:id="@+id/whitecl"
         android:background="@drawable/round_corner_top">
 
         <ScrollView
@@ -226,6 +226,7 @@
                     android:layout_marginHorizontal="15dp"
                     android:layout_marginTop="22dp"
                     android:hint="Description"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/name_til">
@@ -234,7 +235,8 @@
                         android:id="@+id/description_et"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text" />
+                        android:inputType="text"
+                        android:textSize="17sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -257,43 +259,45 @@
                         android:inputType="number" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/color_til"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+                <EditText
+                    android:id="@+id/color_tv"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_marginHorizontal="15dp"
                     android:layout_marginTop="22dp"
+                    android:gravity="center|start"
+                    android:background="@drawable/spinner_textview_layout"
                     android:hint="Color"
+                    android:paddingEnd="8dp"
+                    android:paddingStart="15dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#99000000"
+                    android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/price_til">
+                    app:layout_constraintTop_toBottomOf="@id/price_til"
+                    app:drawableEndCompat="@drawable/ic__arrow_down_24" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/color_et"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="text" />
-                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/size_til"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                <EditText
+                    android:id="@+id/size_tv"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_marginHorizontal="15dp"
                     android:layout_marginTop="22dp"
+                    android:gravity="center|start"
+                    android:background="@drawable/spinner_textview_layout"
+                    android:paddingStart="15dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#99000000"
+                    android:textSize="16sp"
                     android:hint="Size"
+                    android:paddingEnd="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/color_til">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/size_et"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="text" />
-                </com.google.android.material.textfield.TextInputLayout>
+                    app:layout_constraintTop_toBottomOf="@id/color_tv"
+                    app:drawableEndCompat="@drawable/ic__arrow_down_24" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/quantity_til"
@@ -305,7 +309,7 @@
                     android:hint="Quantity"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/size_til">
+                    app:layout_constraintTop_toBottomOf="@id/size_tv">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/quantity_et"
@@ -314,24 +318,24 @@
                         android:inputType="number" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/category_til"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                <EditText
+                    android:id="@+id/category_tv"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_marginHorizontal="15dp"
                     android:layout_marginTop="22dp"
-                    android:hint="Select Category"
+                    android:gravity="center|start"
+                    android:background="@drawable/spinner_textview_layout"
+                    android:hint="Category"
+                    android:paddingStart="15dp"
+                    android:drawableEnd="@drawable/ic__arrow_down_24"
+                    android:paddingEnd="8dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#99000000"
+                    android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/quantity_til">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/category_et"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="text" />
-                </com.google.android.material.textfield.TextInputLayout>
+                    app:layout_constraintTop_toBottomOf="@id/quantity_til"/>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/type_til"
@@ -343,7 +347,7 @@
                     android:hint="Product Type"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/category_til">
+                    app:layout_constraintTop_toBottomOf="@id/category_tv">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/type_et"
@@ -381,7 +385,8 @@
                     android:layout_height="71dp"
                     android:layout_marginTop="35dp"
                     android:background="@drawable/profile_gradient_top_round"
-                    android:text="Save Changes"
+                    android:text="Save Product"
+                    android:textAllCaps="false"
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="17sp"

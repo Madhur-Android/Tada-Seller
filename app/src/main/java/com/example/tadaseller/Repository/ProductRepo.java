@@ -2,6 +2,7 @@ package com.example.tadaseller.Repository;
 
 import android.app.Application;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
@@ -15,10 +16,11 @@ public class ProductRepo {
     private ProductDao productDao;
     private LiveData<List<Product>> allProducts;
 
+
     public ProductRepo(Application application) {
         ProductDatabase database = ProductDatabase.getInstance (application);
         productDao = database.productDao ();
-        allProducts = productDao.getAllProducts ();
+        allProducts = productDao.getAllProducts();
     }
 
     public void insert(Product product) {
@@ -78,5 +80,4 @@ public class ProductRepo {
             return null;
         }
     }
-
 }

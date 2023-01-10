@@ -1,5 +1,4 @@
 package com.example.tadaseller.AppModals;
-import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -9,9 +8,9 @@ public class Product
 {
     @PrimaryKey(autoGenerate = true)
     private int id;
+
     private String name,description,color,size,category,type,publicOrDraft;
-    private int price;
-    private int quantity;
+    private int price,quantity;
     private boolean status;
 
 

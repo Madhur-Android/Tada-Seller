@@ -23,6 +23,8 @@ public interface ProductDao {
     @Delete
     void delete(Product product);
 
+    // to select all data
+    // because we dont have any annotation like @showall
     @Query("SELECT * FROM products")
     LiveData<List<Product>> getAllProducts();
 }
