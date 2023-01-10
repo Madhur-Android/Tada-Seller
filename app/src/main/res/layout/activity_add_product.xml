@@ -273,7 +273,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
 
-                <EditText
+                <TextView
                     android:id="@+id/color_tv"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -293,7 +293,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/price_til" />
 
-                <EditText
+                <TextView
                     android:id="@+id/size_tv"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -336,7 +336,7 @@
                         android:textColor="@color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <EditText
+                <TextView
                     android:id="@+id/category_tv"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
