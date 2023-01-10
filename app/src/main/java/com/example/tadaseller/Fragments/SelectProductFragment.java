@@ -21,7 +21,7 @@ public class SelectProductFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentSelectProductBinding.inflate(inflater,container,false);
+        binding = FragmentSelectProductBinding.inflate(inflater, container, false);
 
         binding.txtRecordedVideo.setOnClickListener(v -> {
 

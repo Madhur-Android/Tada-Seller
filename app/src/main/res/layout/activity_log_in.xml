@@ -74,10 +74,11 @@
             android:inputType="textEmailAddress"
             android:paddingStart="20dp"
             android:textColor="@color/black"
+            android:textColorHint="#80282729"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/email_TV"
-            />
+            app:layout_constraintTop_toBottomOf="@id/email_TV" />
+
         <TextView
             android:id="@+id/password_TV"
             android:layout_width="wrap_content"
@@ -90,26 +91,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/email_ET" />
 
-    <EditText
-        android:id="@+id/password_ET"
-        android:layout_width="match_parent"
-        android:layout_height="42dp"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="25dp"
-        android:background="@drawable/edittext_layout"
-        android:drawableLeft="@drawable/ic_password"
-        android:drawablePadding="20dp"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:paddingStart="20dp"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/password_TV"
-        tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
-
-
+        <EditText
+            android:id="@+id/password_ET"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="25dp"
+            android:background="@drawable/edittext_layout"
+            android:drawableLeft="@drawable/ic_password"
+            android:drawablePadding="20dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:paddingStart="20dp"
+            android:textColor="@color/black"
+            android:textColorHint="#80282729"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/password_TV"
+            tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
 
         <TextView
@@ -147,10 +147,10 @@
             android:id="@+id/dhaaTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="54dp"
             android:text="Don't Have An Account ?"
             android:textColor="@color/black"
             android:textSize="14dp"
-            android:layout_marginTop="54dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/login_btn" />

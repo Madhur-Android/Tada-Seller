@@ -69,6 +69,7 @@
                     android:layout_height="80dp"
                     android:layout_marginHorizontal="8dp"
                     android:layout_marginTop="20dp"
+                    android:background="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/upi">
@@ -78,6 +79,7 @@
                         android:layout_width="68dp"
                         android:layout_height="68dp"
                         android:layout_marginStart="5dp"
+                        android:background="@color/white"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
@@ -206,7 +208,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
                     android:layout_marginTop="20dp"
+                    android:background="@color/white"
                     android:hint="Product Name"
+                    android:textColorHint="#80000000"
+                    app:boxStrokeColor="@color/purple_500"
+                    app:hintTextColor="@color/purple_500"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/product_images">
@@ -215,7 +221,8 @@
                         android:id="@+id/name_et"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text" />
+                        android:inputType="text"
+                        android:textColor="@color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -226,7 +233,9 @@
                     android:layout_marginHorizontal="15dp"
                     android:layout_marginTop="22dp"
                     android:hint="Description"
-
+                    android:textColorHint="#80000000"
+                    app:boxStrokeColor="@color/purple_500"
+                    app:hintTextColor="@color/purple_500"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/name_til">
@@ -236,7 +245,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
-                        android:textSize="17sp" />
+                        android:textSize="17sp" 
+                        android:textColor="@color/black" />
+
                 </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -248,6 +259,9 @@
                     android:layout_marginHorizontal="15dp"
                     android:layout_marginTop="22dp"
                     android:hint="Price"
+                    android:textColorHint="#80000000"
+                    app:boxStrokeColor="@color/purple_500"
+                    app:hintTextColor="@color/purple_500"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/description_til">
@@ -256,7 +270,8 @@
                         android:id="@+id/price_et"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:textColor="@color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -274,11 +289,21 @@
                     android:textColor="@color/black"
                     android:textColorHint="#99000000"
                     android:textSize="16sp"
+                    android:textColorHint="#80000000"
+                    app:boxStrokeColor="@color/purple_500"
+                    app:hintTextColor="@color/purple_500"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/price_til"
                     app:drawableEndCompat="@drawable/ic__arrow_down_24" />
-
+                    
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/color_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textColor="@color/black" />
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <EditText
                     android:id="@+id/size_tv"
@@ -298,6 +323,20 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/color_tv"
                     app:drawableEndCompat="@drawable/ic__arrow_down_24" />
+                    android:textColorHint="#80000000"
+                    app:boxStrokeColor="@color/purple_500"
+                    app:hintTextColor="@color/purple_500"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/color_til">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/size_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textColor="@color/black" />
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/quantity_til"
@@ -307,6 +346,9 @@
                     android:layout_marginHorizontal="15dp"
                     android:layout_marginTop="22dp"
                     android:hint="Quantity"
+                    android:textColorHint="#80000000"
+                    app:boxStrokeColor="@color/purple_500"
+                    app:hintTextColor="@color/purple_500"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/size_tv">
@@ -315,7 +357,8 @@
                         android:id="@+id/quantity_et"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:textColor="@color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <EditText
@@ -336,7 +379,22 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/quantity_til"/>
+                    android:hint="Select Category"
+                    android:textColorHint="#80000000"
+                    app:boxStrokeColor="@color/purple_500"
+                    app:hintTextColor="@color/purple_500"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/quantity_til">
 
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/category_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textColor="@color/black" />
+                </com.google.android.material.textfield.TextInputLayout>
+                
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/type_til"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -345,6 +403,9 @@
                     android:layout_marginHorizontal="15dp"
                     android:layout_marginTop="22dp"
                     android:hint="Product Type"
+                    android:textColorHint="#80000000"
+                    app:boxStrokeColor="@color/purple_500"
+                    app:hintTextColor="@color/purple_500"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/category_tv">
@@ -353,7 +414,8 @@
                         android:id="@+id/type_et"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text" />
+                        android:inputType="text"
+                        android:textColor="@color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <androidx.appcompat.widget.SwitchCompat
@@ -363,7 +425,6 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="15dp"
                     app:layout_constraintEnd_toEndOf="parent"
-
                     app:layout_constraintTop_toBottomOf="@id/type_til" />
 
                 <TextView

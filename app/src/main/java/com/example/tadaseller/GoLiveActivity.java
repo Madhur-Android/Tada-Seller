@@ -48,7 +48,6 @@ public class GoLiveActivity extends AppCompatActivity {
     public static final String TAG = "AndroidCameraApi";
 
     static boolean state = false;
-    static boolean check = false;
     public static final int REQUEST_CAMERA_PERMISSION = 200;
     private Handler mBackgroundHandler;
     private HandlerThread mBackgroundThread;
@@ -87,21 +86,42 @@ public class GoLiveActivity extends AppCompatActivity {
             onBackPressed();
         });
         binding.goButton.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(),LiveActivity.class);
+            Intent intent = new Intent(getApplicationContext(), LiveActivity.class);
             startActivity(intent);
         });
+        binding.torchBtn.setOnClickListener(v -> {
+            torch();
+        });
 
+        binding.switchCamera.setOnClickListener(v -> {
+            openCamera();
+        });
+
+    }
+
+    protected void startBackgroundThread() {
+        mBackgroundThread = new HandlerThread("Camera Background");
+        mBackgroundThread.start();
+        mBackgroundHandler = new Handler(mBackgroundThread.getLooper());
     }
 
     private final CameraDevice.StateCallback stateCallback = new CameraDevice.StateCallback() {
         @Override
         public void onOpened(@NonNull CameraDevice camera) {
-
-            //This is called when the camera is open
             Log.e(TAG, "onOpened");
             cameraDevice = camera;
             createCameraPreview();
+        }
 
+        protected void stopBackgroundThread() {
+            mBackgroundThread.quitSafely();
+            try {
+                mBackgroundThread.join();
+                mBackgroundThread = null;
+                mBackgroundHandler = null;
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
 
         @Override
@@ -143,126 +163,57 @@ public class GoLiveActivity extends AppCompatActivity {
 
         CameraManager manager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
 
-        Log.e(TAG, "is Camera Open...");
-        try {
-            cameraId = manager.getCameraIdList()[0];
-
-            //  toggleFlashLightOnOff = findViewById(R.id.torch_btn);
-            state = true;
-            binding.torchBtn.setOnClickListener(v -> {
-                if (state) {
-                    captureRequestBuilder.set(CaptureRequest.FLASH_MODE, CaptureRequest.FLASH_MODE_TORCH);
-                    try {
-                        cameraCaptureSessions.stopRepeating();
-                    } catch (CameraAccessException e) {
-                        e.printStackTrace();
-                    }
-                    try {
-                        cameraCaptureSessions.setRepeatingRequest(captureRequestBuilder.build(), null, null);
-                        state = false;
-
-                    } catch (CameraAccessException e) {
-                        e.printStackTrace();
-                    }
-                } else {
-                    captureRequestBuilder.set(CaptureRequest.FLASH_MODE, CaptureRequest.FLASH_MODE_OFF);
-
-                    try {
-                        cameraCaptureSessions.stopRepeating();
-                    } catch (CameraAccessException e) {
-                        e.printStackTrace();
-                    }
-                    try {
-                        cameraCaptureSessions.setRepeatingRequest(captureRequestBuilder.build(), null, null);
-                        state = true;
-                    } catch (CameraAccessException e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
-
-            binding.switchCamera.setOnClickListener(v -> {
-                CameraManager manager2 = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
-                if (!check) {
-
-                    try {
-                        cameraId = manager2.getCameraIdList()[1];
-                    } catch (CameraAccessException e) {
-                        e.printStackTrace();
-                    }
-                    CameraCharacteristics characteristics = null;
-                    try {
-                        characteristics = manager2.getCameraCharacteristics(cameraId);
-                    } catch (CameraAccessException e) {
-                        e.printStackTrace();
-                    }
-                    StreamConfigurationMap map = characteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
-                    assert map != null;
-                    imageDimension = map.getOutputSizes(SurfaceTexture.class)[1];
-                    //add permission for camera and let user grant the permission
-                    if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) !=
-                            PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
-                            Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                    }
-                    try {
-                        manager2.openCamera(cameraId, stateCallback, null);
-                    } catch (CameraAccessException e) {
-                        e.printStackTrace();
-                    }
-
-                    check = true;
-                } else {
-
-
-                    try {
-                        cameraId = manager2.getCameraIdList()[0];
-                    } catch (CameraAccessException e) {
-                        e.printStackTrace();
-                    }
-                    CameraCharacteristics characteristics = null;
-                    try {
-                        characteristics = manager2.getCameraCharacteristics(cameraId);
-                    } catch (CameraAccessException e) {
-                        e.printStackTrace();
-                    }
-                    StreamConfigurationMap map = characteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
-                    assert map != null;
-                    imageDimension = map.getOutputSizes(SurfaceTexture.class)[0];
-                    //add permission for camera and let user grant the permission
-                    if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) !=
-                            PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
-                            Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                    }
-                    try {
-                        manager2.openCamera(cameraId, stateCallback, null);
-                    } catch (CameraAccessException e) {
-                        e.printStackTrace();
-                    }
-
-                    check = false;
-                }
-            });
-
-
-            CameraCharacteristics characteristics = manager.getCameraCharacteristics(cameraId);
-            StreamConfigurationMap map = characteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
-            assert map != null;
-            imageDimension = map.getOutputSizes(SurfaceTexture.class)[1];
-            //add permission for camera and let user grant the permission
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) !=
-                    PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(GoLiveActivity.this, new String[]{Manifest.permission.CAMERA,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CAMERA_PERMISSION);
-                return;
-            }
-            manager.openCamera(cameraId, stateCallback, null);
-        } catch (CameraAccessException e) {
-            e.printStackTrace();
+        if (cameraDevice != null) {
+            cameraDevice.close();
+            cameraDevice = null;
+            stopBackgroundThread();
         }
+
+
+        if (!state) {
+            state = true;
+            try {
+                cameraId = manager.getCameraIdList()[0];
+                CameraCharacteristics characteristics = manager.getCameraCharacteristics(cameraId);
+                startBackgroundThread();
+                StreamConfigurationMap map = characteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
+                assert map != null;
+                imageDimension = map.getOutputSizes(SurfaceTexture.class)[0];
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) !=
+                        PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(GoLiveActivity.this, new String[]{Manifest.permission.CAMERA,
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CAMERA_PERMISSION);
+                    return;
+                }
+                manager.openCamera(cameraId, stateCallback, null);
+            } catch (CameraAccessException e) {
+                e.printStackTrace();
+            }
+        } else {
+            state = false;
+            try {
+                cameraId = manager.getCameraIdList()[1];
+                CameraCharacteristics characteristics = manager.getCameraCharacteristics(cameraId);
+                startBackgroundThread();
+                StreamConfigurationMap map = characteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
+                assert map != null;
+                imageDimension = map.getOutputSizes(SurfaceTexture.class)[0];
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) !=
+                        PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(GoLiveActivity.this, new String[]{Manifest.permission.CAMERA,
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CAMERA_PERMISSION);
+                    return;
+                }
+                manager.openCamera(cameraId, stateCallback, null);
+            } catch (CameraAccessException e) {
+                e.printStackTrace();
+            }
+        }
+        Log.e(TAG, "is Camera Open...");
+
         Log.e(TAG, "openCamera X");
-
-
     }
 
 
@@ -277,22 +228,11 @@ public class GoLiveActivity extends AppCompatActivity {
             cameraDevice.createCaptureSession(Arrays.asList(surface), new CameraCaptureSession.StateCallback() {
                 @Override
                 public void onConfigured(@NonNull CameraCaptureSession cameraCaptureSession) {
-                    //The Camera is already close
                     if (null == cameraDevice) {
                         return;
                     }
                     cameraCaptureSessions = cameraCaptureSession;
                     updatePreview();
-//                    if (null == cameraDevice) {
-//                        Log.e (TAG, "updatePreview error ,return");
-//                    }
-//                    captureRequestBuilder.set (CaptureRequest.CONTROL_MODE, CameraMetadata.CONTROL_MODE_AUTO);
-//                    try {
-
-//                        cameraCaptureSession.setRepeatingRequest(captureRequestBuilder.build(), null, mBackgroundHandler);
-//                    } catch (CameraAccessException e) {
-//                        e.printStackTrace();
-//                    }
                 }
 
                 @Override
@@ -320,6 +260,38 @@ public class GoLiveActivity extends AppCompatActivity {
 
     }
 
+    private void torch() {
+        if (state) {
+            captureRequestBuilder.set(CaptureRequest.FLASH_MODE, CaptureRequest.FLASH_MODE_TORCH);
+            try {
+                cameraCaptureSessions.stopRepeating();
+            } catch (CameraAccessException e) {
+                e.printStackTrace();
+            }
+            try {
+                cameraCaptureSessions.setRepeatingRequest(captureRequestBuilder.build(), null, null);
+                state = false;
+
+            } catch (CameraAccessException e) {
+                e.printStackTrace();
+            }
+        } else {
+            captureRequestBuilder.set(CaptureRequest.FLASH_MODE, CaptureRequest.FLASH_MODE_OFF);
+
+            try {
+                cameraCaptureSessions.stopRepeating();
+            } catch (CameraAccessException e) {
+                e.printStackTrace();
+            }
+            try {
+                cameraCaptureSessions.setRepeatingRequest(captureRequestBuilder.build(), null, null);
+                state = true;
+            } catch (CameraAccessException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     @Override
     public void onBackPressed() {
         if (getFragmentManager().getBackStackEntryCount() == 0) {
@@ -329,4 +301,39 @@ public class GoLiveActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e(TAG, "onResume");
+        startBackgroundThread();
+        if (binding.cameraView.isAvailable()) {
+            openCamera();
+        } else {
+            binding.cameraView.setSurfaceTextureListener(textureListener);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        Log.e(TAG, "onPause");
+        // jb app apn use nhi kr rhe he tb apn camera ko use me nhi rkhna chahte background me isliye usko close krenge apn
+        if (cameraDevice != null) {
+            cameraDevice.close();
+            cameraDevice = null;
+            stopBackgroundThread();
+        }
+        super.onPause();
+
+    }
+
+    protected void stopBackgroundThread() {
+        mBackgroundThread.quitSafely();
+        try {
+            mBackgroundThread.join();
+            mBackgroundThread = null;
+            mBackgroundHandler = null;
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }
